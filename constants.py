@@ -18,7 +18,7 @@ CHROMA_SETTINGS = Settings(
 )
 
 CONTEXT_WINDOW_SIZE = 4096
-MAX_NEW_TOKENS = CONTEXT_WINDOW_SIZE/4 # int(CONTEXT_WINDOW_SIZE/4)
+MAX_NEW_TOKENS = CONTEXT_WINDOW_SIZE/4 
 
 
 N_GPU_LAYERS = 100  # Llama-2-70B has 83 layers
@@ -36,9 +36,6 @@ DOCUMENT_MAP = {
 # EMBEDDING_MODEL_NAME = "intfloat/e5-base-v2" # Uses 0.5 GB of VRAM (A good model for lower VRAM GPUs)
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2" # Uses 0.2 GB of VRAM (Less accurate but fastest - only requires 150mb of vram)
 
-####
-#### MULTILINGUAL EMBEDDING MODELS
-####
 
 # EMBEDDING_MODEL_NAME = "intfloat/multilingual-e5-large" # Uses 2.5 GB of VRAM
 # EMBEDDING_MODEL_NAME = "intfloat/multilingual-e5-base" # Uses 1.2 GB of VRAM

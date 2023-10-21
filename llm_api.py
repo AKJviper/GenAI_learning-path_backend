@@ -87,37 +87,6 @@ def retrieve(cat="JAVA"):
 qar = retrieve(DOCUMENT_CAT)
 app = Flask(__name__) 
 CORS(app, support_credentials=True)
-# @app.route("/api/run_ingestion", methods=["GET"])
-# def run_ingest_route():
-#     global DB
-#     global RETRIEVER
-#     global QA
-#     try:
-#         run_langest_commands = ["python", "ingestion.py"]
-#         result = subprocess.run(run_langest_commands, capture_output=True)
-#         if result.returncode != 0:
-#             return "Script execution failed: {}".format(result.stderr.decode("utf-8")), 500
-#         # load the vectorstore
-#         DB = Chroma(
-#             persist_directory=PERSIST_DIRECTORY,
-#             embedding_function=embeddings,
-#             client_settings=CHROMA_SETTINGS,
-#         )
-#         RETRIEVER = DB.as_retriever()
-#         prompt, memory = get_prompt_template(promptTemplate_type="llama", history=False)
-
-#         QA = RetrievalQA.from_chain_type(
-#             llm=llm,
-#             chain_type="stuff",
-#             retriever=RETRIEVER,
-#             return_source_documents=SHOW_SOURCES,
-#             chain_type_kwargs={
-#                 "prompt": prompt,
-#             },
-#         )
-#         return "Script executed successfully: {}".format(result.stdout.decode("utf-8")), 200
-#     except Exception as e:
-#         return f"Error occurred: {str(e)}", 500
 
 
     

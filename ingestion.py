@@ -9,13 +9,11 @@ from langchain.vectorstores import Chroma
 from constants import (
     CHROMA_SETTINGS,
     DOCUMENT_MAP,
-    EMBEDDING_MODEL_NAME,
     INGEST_THREADS,
     PERSIST_DIRECTORY,
     SOURCE_DIRECTORY,
 )
 def load_single_document(file_path: str) -> Document:
-    # Loads a single document from a file path
     file_extension = os.path.splitext(file_path)[1]
     loader_class = DOCUMENT_MAP.get(file_extension)
     if loader_class:
@@ -26,8 +24,6 @@ def load_single_document(file_path: str) -> Document:
 
 
 def load_document_batch(filepaths):
-    logging.info("Loading document batch")
-    # create a thread pool
     with ThreadPoolExecutor(len(filepaths)) as exe:
         # load files
         futures = [exe.submit(load_single_document, name) for name in filepaths]
@@ -60,7 +56,6 @@ def main():
     # Load documents and split in chunks
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     documents = load_documents(SOURCE_DIRECTORY)
-    # text_documents = split_pdf(documents)
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
     texts = text_splitter.split_documents(documents)
     logging.info(f"Loaded {len(documents)} documents from {SOURCE_DIRECTORY}")

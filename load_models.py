@@ -38,27 +38,6 @@ def load_quantized_model_gguf_ggml(model_id, model_basename, device_type, loggin
         return None
 
 
-# def load_quantized_model_qptq(model_id, model_basename, device_type, logging):
-#     logging.info("Using AutoGPTQForCausalLM for quantized models")
-
-#     if ".safetensors" in model_basename:
-#         # Remove the ".safetensors" ending if present
-#         model_basename = model_basename.replace(".safetensors", "")
-
-#     tokenizer = AutoTokenizer.from_pretrained(model_id, use_fast=True)
-#     logging.info("Tokenizer loaded")
-
-#     model = AutoGPTQForCausalLM.from_quantized(
-#         model_id,
-#         model_basename=model_basename,
-#         use_safetensors=True,
-#         trust_remote_code=True,
-#         device_map="auto",
-#         use_triton=False,
-#         quantize_config=None,
-#     )
-#     return model, tokenizer
-
 
 def load_full_model(model_id, model_basename, device_type, logging):
     if device_type.lower() in ["mps", "cpu"]:

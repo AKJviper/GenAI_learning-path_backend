@@ -26,7 +26,6 @@ def get_prompt_template(system_prompt=system_prompt, promptTemplate_type=None, h
             prompt_template = B_INST + SYSTEM_PROMPT + instruction + E_INST
             prompt = PromptTemplate(input_variables=["context", "question"], template=prompt_template)
     else:
-        # change this based on the model you have selected.
         if history:
             prompt_template = (
                 system_prompt
